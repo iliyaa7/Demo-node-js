@@ -13,14 +13,14 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       containers:
-        - resources: {}
-          terminationMessagePath: /dev/termination-log
-          name: {{ .Chart.Name }}
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
-          imagePullPolicy: Always
-          image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
+          resources: {}
+          terminationMessagePath: /dev/termination-log
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
