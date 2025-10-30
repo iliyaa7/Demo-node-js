@@ -13,7 +13,7 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: "{{ .Chart.Name }}"
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
           imagePullPolicy: Always
           ports:
