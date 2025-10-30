@@ -1,26 +1,25 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: {{ .Chart.Name }}
+  name:  {{ .Chart.Name }}
 spec:
   replicas: {{ .Values.ReplicaNumber }}
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app:  {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        app:  {{ .Chart.Name }}
     spec:
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
-          name: {{ .Chart.Name }}
+          name:  {{ .Chart.Name }}
           ports:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
-          imagePullPolicy: Always
-          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
