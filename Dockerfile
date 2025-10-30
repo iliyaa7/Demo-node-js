@@ -15,7 +15,7 @@ RUN npm install && npm audit fix --force
 COPY src .
 
 # create local env varibel for the PORT
-ENV PORT 8080
+ENV PORT=8080
 
 USER 1001
 
